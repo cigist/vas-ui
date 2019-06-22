@@ -1,58 +1,263 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>exaq - space | </title>
-    <!-- Bootstrap -->
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="./assets/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="./assets/css/nprogress.css" rel="stylesheet">
-    <!-- Custom Theme Style -->
-    <link rel="stylesheet" href="./assets/css/jquery-confirm.css">
-    <!-- mystyle -->
-    <link rel="stylesheet" href="./assets/css/style210920182028.css">
-    <script src="./assets/vendor/jquery.min.js"></script>
-    <script src="./assets/lib/bundle.js"></script>
-    <script src="./assets/vendor/angular-fullscreen.js"></script>
-    <script src="./assets/vendor/bootstrap.min.js"></script>
-    <script src="./assets/vendor/jquery-confirm.js"></script>
-    <script src="./assets/vendor/loadingoverlay.js"></script>
-     <!-- data table Theme Scripts -->
-     <script src="./assets/vendor/jquery.dataTables.min.js"></script>
-     <script src="./assets/vendor/dataTables.bootstrap.min.js"></script>
-     <script src="./assets/vendor/ui-bootstrap.js"></script>
-     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr3NS3Tb_taWdVqNQFSTJ5TlvvhN9gV08&libraries=places"></script>
-     <script src="./assets/vendor/angularjs-google-maps.js"></script>
-    <!-- <script src="./assets/vendor/angular-web-notification.js"></script> -->
-    <script src="./assets/js/app210920182028.js"></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="./images/favicon.ico" type="image/ico" />
+  <title>exaq - space | </title>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="google-site-verification" content="DtUCF2MiOOEqPaYZW5pyIYehRae7oxihIRFFG_gNYSg" />
+  <!--  style sheet -->
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link href="./assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="./assets/css/bootstrap-select.min.css" rel="stylesheet"> -->
+  <!-- Font Awesome -->
+  <link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="./assets/css/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="./assets/css/green.css" rel="stylesheet">
+  <!-- bootstrap-progressbar -->
+  <link href="./assets/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+  <!-- JQVMap -->
+  <link href="./assets/css/jqvmap.min.css" rel="stylesheet" />
+  <!-- bootstrap-daterangepicker -->
+  <link href="./assets/css/daterangepicker.css" rel="stylesheet">
+  <link href="./assets/css/bootstrap-datetimepicker.css" rel="stylesheet">
+  <link href="./assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/jquery-confirm.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap-multiselect.css">
+  <!-- mystyle -->
+  <link rel="stylesheet" href="./assets/css/style210920182028.css">
+  <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+  <link rel="manifest" href="manifest.json">
+  <script src="firebase.js"></script>
+  <script src="./assets/lib/bundle.js"></script>
 </head>
-<body class="login" ng-app="exaq" ng-controller="indexCtrl" style="background-image: url('./images/exaq-bg.jpg');" ng-cloak>
-    <div style="float:left;margin-top:4%;margin-left: 30px;">
-        <div class="login_wrapper" ng-init="init()">
-            <div class="animate form login_form">
-                <section class="login_content">
-                    <form>
-                        <h1>exaq space</h1>
-                        <div>
-                            <h4>Scan QR code dengan myexaq dismartphone anda</h4>
-                            <div style="position: relative;">
-                                <div id="barcode">
-                                </div>
-                                <img src="https://exaq.id/x.png" style="width: 42px;height: 42px;left: 120px;position: absolute;top: 129px;z-index: 100px;background-color: #ffffff;border-radius: 0px;padding: 3px 3px 3px 3px;">
-                            </div>
+
+<body class="nav-md" ng-app="vas">
+    <div class="container body" ng-controller="dashboardCtrl" fullscreen="isFullscreen" ng-cloak>
+        <div class="main_container" ng-init="init()">
+            <div id="sidemenu" class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <!-- menu profile quick info -->
+                    <div class="profile clearfix">
+                        <div class="profile_pic">
+                            <img src="./images/logo.png" alt="..." class="img-circle profile_img" style="width:70px;height:70px;">
                         </div>
-                        <div class="clearfix"></div>
-                    </form>
-                </section>
+                        <div class="profile_info">
+                            <span>Welcome, VAS</span>
+                            <h2>Admin</h2>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="clearfix"></div>
+                    <!-- /menu profile quick info -->
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <ul class="nav side-menu">
+                                <!-- <h3>General</h3> -->
+                                <li><a ui-sref="/"><i class="fa fa-home"></i> Home</span></a></li>
             </div>
+          </div>
+          <!-- /sidebar menu -->
+          <!-- /menu footer buttons -->
+          <div class="sidebar-footer hidden-small">
+            <a data-toggle="tooltip" data-placement="top" title="Settings">
+              <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+              <span class="glyphicon glyphicon-fullscreen" aria-hidden="true" ng-click="openFullscreen()"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Lock">
+              <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+            </a>
+            <a data-toggle="tooltip" data-placement="top" title="Logout" ng-click="logout()">
+              <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- /menu footer buttons -->
         </div>
+      </div>
+      <!-- top navigation -->
+      <div class="top_nav" id="topmenu">
+        <div class="nav_menu">
+          <nav>
+            <div class="nav toggle">
+              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+            </div>
+            <div class="navbar nav_title hidden-xs" style="border: 0;  background-color: transparent;">
+              <a ui-shref="/" class="site_title"><span>Voucher Auth System</span></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="">
+                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                  <img src="./images/logo.png" alt="">Admin
+                  <span class=" fa fa-angle-down"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                  <li><a href="javascript:;"> Profile</a></li>
+                  <li>
+                    <a href="javascript:;">
+                      <span class="badge bg-red pull-right">50%</span>
+                      <span>Settings</span>
+                    </a>
+                  </li>
+                  <li><a href="javascript:;">Help</a></li>
+                  <li><a ng-click="logout()"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                </ul>
+              </li>
+
+              <li role="presentation" class="dropdown">
+                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-envelope-o"></i>
+                  <span class="badge bg-green">6</span>
+                </a>
+                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/x.png" alt="Profile Image" /></span>
+                      <span>
+                        <span>{{name}}</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/x.png" alt="Profile Image" /></span>
+                      <span>
+                        <span>Cigist</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/x.png" alt="Profile Image" /></span>
+                      <span>
+                        <span>Cigist</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>
+                      <span class="image"><img src="images/x.png" alt="Profile Image" /></span>
+                      <span>
+                        <span>Cigist</span>
+                        <span class="time">3 mins ago</span>
+                      </span>
+                      <span class="message">
+                        Film festivals used to be do-or-die moments for movie makers. They were
+                        where...
+                      </span>
+                    </a>
+                  </li>
+                  <li>
+                    <div class="text-center">
+                      <a>
+                        <strong>See All Alerts</strong>
+                        <i class="fa fa-angle-right"></i>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <!-- /top navigation -->
+      <!-- page content -->
+      <div class="right_col" role="main">
+        <main ui-view></main>
+      </div>
+      <!-- footer content -->
+      <footer style="
+            bottom: auto;
+            height: 40px;">
+        <div class="pull-left">
+          <a target="exaq" href="https://colorlib.com/" style="font-style:italic;">Theme By Colorlib</a>
+        </div>
+        <div class="pull-right">
+          <a target="exaq" href="https://exaq.id" style="font-style:italic;">{{version}}</a>
+        </div>
+        <div class="clearfix"></div>
+      </footer>
+      <!-- /footer content -->
     </div>
+  </div>
+  <script src="./assets/vendor/jquery.min.js"></script>
+  <script src="./assets/vendor/angular-fullscreen.js"></script>
+  <script src="./assets/vendor/bootstrap.min.js"></script>
+  <!-- <script src="./assets/vendor/bootstrap-select.min.js"></script> -->
+  <script src="./assets/vendor/jquery-confirm.js"></script>
+  <script src="./assets/vendor/loadingoverlay.js"></script>
+  <script src="./assets/vendor/ui-bootstrap.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr3NS3Tb_taWdVqNQFSTJ5TlvvhN9gV08&libraries=places"></script>
+  <script src="./assets/vendor/angularjs-google-maps.js"></script>
+  <!-- <script src="./assets/vendor/angular-web-notification.js"></script> -->
+  <script src="./assets/js/app210920182028.js"></script>
+  <!-- FastClick -->
+  <script src="./assets/vendor/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="./assets/vendor/nprogress.js"></script>
+  <!-- Chart.js -->
+  <script src="./assets/vendor/Chart.min.js"></script>
+  <!-- gauge.js -->
+  <script src="./assets/vendor/gauge.min.js"></script>
+  <!-- bootstrap-progressbar -->
+  <script src="./assets/vendor/bootstrap-progressbar.min.js"></script>
+  <!-- iCheck -->
+  <script src="./assets/vendor/icheck.min.js"></script>
+  <!-- Skycons -->
+  <script src="./assets/vendor/skycons.js"></script>
+  <!-- Flot -->
+  <script src="./assets/vendor/jquery.flot.js"></script>
+  <script src="./assets/vendor/jquery.flot.pie.js"></script>
+  <script src="./assets/vendor/jquery.flot.time.js"></script>
+  <script src="./assets/vendor/jquery.flot.stack.js"></script>
+  <script src="./assets/vendor/jquery.flot.resize.js"></script>
+  <!-- Flot plugins -->
+  <script src="./assets/vendor/jquery.flot.orderBars.js"></script>
+  <script src="./assets/vendor/jquery.flot.spline.min.js"></script>
+  <script src="./assets/vendor/curvedLines.js"></script>
+  <!-- DateJS -->
+  <script src="./assets/vendor/date.js"></script>
+  <!-- JQVMap -->
+  <script src="./assets/vendor/jquery.vmap.js"></script>
+  <script src="./assets/vendor/jquery.vmap.world.js"></script>
+  <script src="./assets/vendor/jquery.vmap.sampledata.js"></script>
+  <!-- bootstrap-daterangepicker -->
+  <script src="./assets/vendor/moment.min.js"></script>
+  <script src="./assets/vendor/daterangepicker.js"></script>
+  <!-- bootstrap-datetimepicker -->
+  <script src="./assets/vendor/bootstrap-datetimepicker.min.js"></script>
+  <script src="./assets/vendor/bootstrap-colorpicker.min.js"></script>
+  <!-- Custom Theme Scripts -->
+  <script src="./assets/vendor/custom.js"></script>
+  <!-- data table Theme Scripts -->
+  <script src="./assets/vendor/jquery.dataTables.min.js"></script>
+  <script src="./assets/vendor/dataTables.bootstrap.min.js"></script>
+  <script src="./assets/vendor/bootstrap-multiselect.js"></script>
 </body>
+
 </html>

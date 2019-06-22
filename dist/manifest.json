@@ -1,9 +1,9 @@
 {
-    "name": "exaq-smart",
-    "short_name": "smart",
+    "name": "vas",
+    "short_name": "vas",
     "start_url": "Notification",
     "gcm_sender_id": "103953800507",
-    "version":"v1.0.1 www.exaq.id",
+    "version":"v1.0.1",
     "env":"DEV"
 
   }
