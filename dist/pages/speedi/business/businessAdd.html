@@ -1,0 +1,237 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="close()">&times;</button>
+    <b>BUSINESS</b>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <form class="form-horizontal" ng-init="init()" style="margin:0px 10px 0px 10px;">
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12">Customer Code</label>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-xs-12">
+                    <input type="text" class="form-control input-sm" id="customerCode" name="customerCode" placeholder="Masukan customer code" ng-model="textCustomerCode" disabled>
+                </div>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-xs-2">
+                    <div class="form-group" style="float: right;">
+                        <input type="checkbox" class="flat" ng-model="textBlacklist" /> Blacklisted
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-12">Contract</label>
+                <div class="col-sm-5 col-md-5 col-lg-5 col-xs-12">
+                    <input type="text" class="form-control input-sm" id="contract" name="contract" placeholder="Masukan contract" ng-model="textContract" disabled>
+                </div>
+                <label class="control-label col-sm-3 col-md-3 col-lg-3 col-xs-12" style="text-align: right">Contract Date</label>
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                    <div class="form-group">
+                         <input type="text" class="form-control input-sm" id="contractDate" name="contractDate" placeholder="DD/MM/yyyy" ng-model="textContractDate" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Company Name </label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <input type="text" class="form-control input-sm" id="namaPerusahaan" name="namaPerusahaan" placeholder="Masukan nama perusahaan" ng-model="textNamaPerusahaan" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Business Name </label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <input type="text" class="form-control input-sm" id="namaUsaha" name="namaUsaha" placeholder="Masukan nama usaha/brand" ng-model="textNamaUsaha" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Business Area</label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <select class="form-control select" ng-model="textBusinessArea">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Business Media </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                   <select class="form-control select" ng-model="textBusinessMedia">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Afiliation </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <select class="form-control select" ng-model="textAfiliation">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Address </label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <textarea type="text" class="form-control input-sm" id="alamat" name="alamat" placeholder="Masukan alamat lengkap" ng-model="textAlamat" cols="13" rows="3" maxlength="200"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Postal Code </label>
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                    <input type="text" class="form-control input-sm" id="kodepos" name="kodepos" placeholder="Kodepos" ng-model="textKodepos">
+                </div>
+                 <div class="col-sm-8 col-md-8 col-lg-8 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="kota" name="kota" placeholder="Masukan nama kota" ng-model="textKota" disabled>
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Phone1 </label>
+                  <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                    <input type="text" class="form-control input-sm" id="phone1" name="phone1" ng-model="textPhone1">
+                </div>
+                 <div class="col-sm-2 col-md-2 col-lg-2 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="phone2" name="phone2" ng-model="textPhone2">
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Longitude </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="longitude" name="longitude" ng-model="textLongitude">
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Tax ID </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                    <input type="text" class="form-control input-sm" id="taxid" name="taxid" placeholder="Masukan nomor NPWP" ng-model="textTaxID">
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Latitude </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="latitude" name="latitude" ng-model="textLatitude">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Shipping Preq </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                   <select class="form-control select" ng-model="textShippingPreq">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Shipment Type </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <select class="form-control select" ng-model="textShipmentType">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Weigth Estimation </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                   <input type="text" class="form-control input-sm" id="weightEstimation" name="weightEstimation" placeholder="0" ng-model="textNamaAfiliasi">
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Omzet Estimation </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                   <input type="text" class="form-control input-sm" id="omzetEstimation" name="omzetEstimation" placeholder="0" ng-model="textOmzetEstimation">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Main Competitor </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                   <select class="form-control select" ng-model="textMainCompetitor">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Omzet Competitor </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="omzetCompetitor" name="omzetCompetitor" placeholder="0" ng-model="textOmzetCompetitor">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">COD Min Saving </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                   <select class="form-control select" ng-model="textCodMinSaving">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Max Minus Saving </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="maxMinusSaving" name="maxMinusSaving" placeholder="0" ng-model="textMaxMinusSaving">
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Ret Stamp Disc </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                  <input type="text" class="form-control input-sm" id="retStampDisc" name="retStampDisc" placeholder="0" ng-model="textRetStampDisc">
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Oth Stamp Disc </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="othStampDisc" name="othStampDisc" placeholder="0" ng-model="textOthStampDisc">
+                </div>
+            </div>
+             <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Manager Email </label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <input type="text" class="form-control input-sm" id="managerEmail" name="managerEmail" placeholder="Masukan email manager" ng-model="textManagerEmail">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Fullname </label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <input type="text" class="form-control input-sm" id="fullname" name="fullname" placeholder="Masukan nama lengkap" ng-model="textFullname">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Pasport/NIK# </label>
+                <div class="col-sm-4 col-md-4 col-lg-4 col-xs-2">
+                  <input type="text" class="form-control input-sm" id="pasportNik" name="pasportNik" placeholder="Masukan nomor pasport /NIK" ng-model="textPasportNik">
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Nomor Ponsel </label>
+                 <div class="col-sm-4 col-md-4 col-lg-4 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="nomorPonsel" name="nomorPonsel" placeholder="Masukan nomor ponsel" ng-model="textNomorPonsel">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Address</label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <textarea type="text" class="form-control input-sm" id="alamatManager" name="namaManager" placeholder="Masukan alamat lengkap manager" cols="13" rows="3" ng-model="textNamaManager" maxlength="200"></textarea> 
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Kodepos </label>
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                    <input type="text" class="form-control input-sm" id="kodepos" name="kodeposManager" placeholder="Kodepos" ng-model="textKodeposManager">
+                </div>
+                 <div class="col-sm-8 col-md-8 col-lg-8 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="kotaManager" name="kotaManager" placeholder="Masukan nama kota" ng-model="textKotaManager" disabled>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Fasilities </label>
+                <div class="col-sm-2 col-md-2 col-lg-2 col-xs-2">
+                    <select class="form-control select" ng-model="textFasilities">
+                        <option value="">All</option>
+                        <option ng-repeat="orgdes in listKota" value="{{orgdes[1]}}">{{orgdes[1]}}</option>
+                    </select>
+                </div>
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Total Employee </label>
+                 <div class="col-sm-8 col-md-8 col-lg-8 col-xs-10">
+                    <input type="text" class="form-control input-sm" id="totalEmployee" name="totalEmployee" placeholder="0" ng-model="textTotalEmployee">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3">Remark </label>
+                <div class="col-sm-10 col-md-10 col-lg-10 col-xs-12">
+                    <textarea type="text" class="form-control input-sm" id="remark" name="remark" placeholder="Masukan keterangan" cols="13" rows="2" ng-model="textRemark" maxlength="200"></textarea> 
+                </div>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px;margin-top: 10px;">
+                <label class="control-label col-sm-2 col-md-2 col-lg-2 col-xs-3"></label>
+                <div class="col-sm-3 col-xs-12">
+                    <button class="btn btn-dark btn-load"> TAX ID</button>
+                    <button class="btn btn-dark btn-load"> PASPORT/NIK</button>
+                </div>
+                <div class="col-sm-7 col-xs-12">
+                    <button class="btn btn-dark btn-load" style="float: right;" ng-click="save()"> SIMPAN</button>
+                    <button class="btn btn-dark btn-load" style="float: right;" ng-click="close()"> CLOSE</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

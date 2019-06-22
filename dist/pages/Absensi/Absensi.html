@@ -1,0 +1,163 @@
+<div class="row" ng-app="exaq" ng-controller="absensiCtrl">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>ABSEN<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form class="form-horizontal form-label-left input_mask">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-lg-4 col-md-12">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Nama Karyawan</label>
+                                <div class="col-md-8 col-sm-8  col-xs-12">
+                                    <select class="form-control select" ng-model="textProspectTipe">
+                                        <option value="">All</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-lg-4 col-md-4">
+                            <div class="form-group">
+                                    <label class="control-label col-md-4 col-sm-4 col-xs-12">Tanggal</label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class='input-group date' id='datetimepicker5'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-lg-4 col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class='input-group date' id='datetimepicker6'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-xs-12 col-sm-4 col-lg-4 col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <div class='input-group date' id='Datepicker2'>
+                                            <input type='text' class="form-control" id="dateFrom" ng-model="pupDate" />
+                                            <li class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </li>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="col-xs-12 col-sm-2 col-lg-2 col-sm-2">
+                                <div class="form-group">
+                                    <div style="float:right;">
+                                        <button type="button" class="btn btn-dark btn-load" ng-click="showAdd()">LOAD</button>
+                                        <button type="button" class="btn btn-dark btn-load" ng-click="getList()">XLS</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </form>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Nama Karyawan</th>
+                                    <th>Kerja</th>
+                                    <th>Alpha</th>
+                                    <th>Cuti</th>
+                                    <th>Sakit</th>
+                                    <th>Lain</th>
+                                    <th>Jam</th>
+                                    <th>Terlambat</th>
+                                    <th>#</th>
+                                </tr>
+                            </thead>
+                            <!-- <tbody>
+                                <tr ng-repeat="items in listKaryawan">
+                                     <td>{{items.rowNum}}</td>
+                                    <td>{{items.aspOrg}}</td>
+                                </tr>
+                            </tbody> -->
+                        </table>
+                    </div>
+                <section>
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                            <div style="margin-left: 5px;">
+                                Record :
+                                <select id="jmlBaris" ng-change="changeRecords()" ng-model="pageSize" ng-options="page.no as page.no for page in pageSizeNo"
+                                    style="background-color: transparent;border: 0px;width: 60px;">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 col-sm-10 col-md-10 col-lg-10">
+                            <div class="row" style="float:right;margin-right:5px;margin-bottom:-20px;margin-top: -15px;">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item">
+                                            <a class="page-link">
+                                                <button class="btn-page" ng-click="backPage()" ng-disabled="currentPage == 0">
+                                                    <i aria-hidden="true" class="fa fa-angle-left">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" disabled="">
+                                                <button class="btn-page">
+                                                    {{currentPage
+                                                    + 1}}/{{numberOfPages()}}
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link">
+                                                <button class="btn-page" ng-click="nextPage()" ng-disabled="currentPage >= records / pageSize - 1">
+                                                    <i aria-hidden="true" class="fa fa-angle-right">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <script>
+    $('#Datepicker1').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#Datepicker2').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+</script> -->
+<script type="">
+    $(function () {
+        $('#datetimepicker5').datetimepicker();
+        // $('#datetimepicker6').datetimepicker({
+        //     useCurrent: false //Important! See issue #1075
+        // });
+        // $("#datetimepicker5").on("dp.change", function (e) {
+        //     $('#datetimepicker6').data("DateTimePicker").minDate(e.date);
+        // });
+        // $("#datetimepicker6").on("dp.change", function (e) {
+        //     $('#datetimepicker5').data("DateTimePicker").maxDate(e.date);
+        // });
+    });
+</script>
+

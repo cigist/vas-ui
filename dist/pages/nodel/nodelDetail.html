@@ -1,0 +1,122 @@
+<div class="row" ng-app="exaq" ng-controller="nodelDetailControlCtrl">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>DETAIL COMDATE NO DEL<small></small></h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li style="float:right;">
+                        <a class="close-link" ui-sref="nodel"><i class="fa fa-close"></i></a>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content" ng-init="init()">
+                <form class="form-horizontal form-label-left input_mask">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-lg-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">ASP</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="asp" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-2 col-sm-2 col-xs-12">Total</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="records" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-2 col-lg-2">
+                            <div class="form-group">
+                                <div style="float:right;">
+                                    <button type="button" class="btn btn-dark btn-load" ng-click="doMessage()">PESAN</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>No Kiriman</th>
+                                <th>COM</th>
+                                <th>Pengirim</th>
+                                <th>Ponsel</th>
+                                <th>DEX-1</th>
+                                <th>Tanggal</th>
+                                <th>Kurir</th>
+                                <th>Last</th>
+                                <th>Tanggal</th>
+                                <th>Kurir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="items in listData" ng-click="goTrack(items.track)">
+                                <td>{{items.rowNum}}</td>
+                                <td>{{items.track}}</td>
+                                <td>{{items.com}}</td>
+                                <td>{{items.pengirim}}</td>
+                                <td>{{items.ponsel}}</td>
+                                <td>{{items.dexMin1}}</td>
+                                <td>{{items.tgl}}</td>
+                                <td>{{items.kurir}}</td>
+                                <td>{{items.last}}</td>
+                                <td>{{items.tgl2}}</td>
+                                <td>{{items.kurir2}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <section>
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                            <div style="margin-left: 5px;">
+                                Record :
+                                <select id="jmlBaris" ng-change="changeRecords()" ng-model="pageSize" ng-options="page.no as page.no for page in pageSizeNo"
+                                    style="background-color: transparent;border: 0px;width: 60px;">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 col-sm-10 col-md-10 col-lg-10">
+                            <div class="row" style="float:right;margin-right:5px;margin-bottom:-20px;margin-top: -15px;">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item" ng-click="backPage()">
+                                            <a class="page-link">
+                                                <button class="btn-page" ng-disabled="currentPage == 0">
+                                                    <i aria-hidden="true" class="fa fa-angle-left">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" disabled="">
+                                                <button class="btn-page">
+                                                    {{currentPage
+                                                    + 1}}/{{numberOfPages()}}
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="page-item" ng-click="nextPage()">
+                                            <a class="page-link">
+                                                <button class="btn-page"  ng-disabled="currentPage >= records / pageSize - 1">
+                                                    <i aria-hidden="true" class="fa fa-angle-right">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

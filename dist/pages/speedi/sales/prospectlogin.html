@@ -1,0 +1,150 @@
+<div class="row" ng-app="exaq" ng-controller="propectLoginCtrl">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>BLASTING STATUS<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content" ng-init="init()">
+                <form class="form-horizontal form-label-left input_mask">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Date</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <div class='input-group date' id='myDatepicker1'>
+                                        <input type='text' class="form-control" id="date"/>
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Pros Type</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                      <div ng-dropdown-multiselect="" options="example8data" selected-model="type" extra-settings="example8settings"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Kota</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select class="form-control select" ng-model="kota">
+                                        <option value="">All</option>
+                                        <option ng-repeat="orgdes in listKota" value="{{orgdes[0]}}">{{orgdes[1]}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Status</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select class="form-control select selectpicker" ng-model="status" required>
+                                        <option value="">All</option>
+                                        <option value="KLIK_LINK">Klik Link</option>
+                                        <option value="LOGIN">Login</option>
+                                        <option value="BALAS POSITIF">Balas Positif</option>
+                                        <option value="BALAS NEGATIF">Balas Negatif</option>
+                                        <option value="TIDAK BALAS">Tidak Balas</option>
+                                        <option value="LOGIN NO_LAIN">Login Nomor Lain</option>
+                                        <option value="FAILED">Failed</option>
+                                        <option value="NO STATUS">No Status</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-lg-6">
+                            <div style="float:right;">
+                                <button type="button" class="btn btn-dark btn-load" ng-click="getListProspect()">LOAD</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tanggal</th>
+                                <th>Nama</th>
+                                <th>Ponsel</th>
+                                <th>Type Usaha</th>
+                                <th>Kota</th>
+                                <th>Personal</th>
+                                <th>Dop</th>
+                                <th>Status</th>
+                                <th>Tanggal/Jam</th>
+                                <th>WA</th>
+                                <th>UPD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="items in listProspect  | filter :status | startFrom:currentPage * pageSize | limitTo:pageSize">
+                                <td>{{$index+1}}</td>
+                                <td>{{items.DATEZ}}</td>
+                                <td>{{items.NAMA}}</td>
+                                <td>{{items.PONSEL}}</td>
+                                <td>{{items.KORP}}</td>
+                                <td>{{items.KOTA}}</td>
+                                <td>{{items.PERSONAL}}</td>
+                                <td>{{items.DOP}}</td>
+                                <td>{{items.STATUS}}</td>
+                                <td>{{items.TIME}}</td>
+                                <td>
+                                    <a title="Send Whatsapp" title="Send Whatsapp"  style="font-size:18px;margin: 0px;padding: -10px;"><i
+                                            class="fa fa-whatsapp" ng-click="showWa(items)" ng-if="items.IS_BLAST"></i></a>
+                                    <!-- if true -->
+                                    <a title="Send Whatsapp" title="Done"  style="font-size:18px;margin: 0px;padding: -10px;"><i
+                                                    class="fa fa-check-circle" ng-if="!items.IS_BLAST"></i></a>
+                                </td>
+                                <td>
+                                    <a title="Send Whatsapp" title="Update" style="font-size:18px;margin: 0px;padding: -10px;"><i
+                                            class="fa fa-pencil" ng-click="showUpdate(items)"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <section>
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                            <div style="margin-left: 5px;">
+                                Record :
+                                <select id="jmlBaris" style="background-color: transparent;border: 0px;width: 60px;"
+                                    ng-model="pageSize" ng-options="page.no as page.no for page in pageSizeNo"></select>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 col-sm-10 col-md-10 col-lg-10">
+                            <div class="row" style="float:right;margin-right:5px;margin-bottom:-20px;margin-top: -15px;">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link"><button ng-disabled="currentPage == 0"
+                                                    ng-click="currentPage = currentPage - 1" class="btn-page"><i class="fa fa-angle-left"
+                                                        aria-hidden="true"></i></button></a></li>
+                                        <li class="page-item"><a class="page-link" disabled><button class="btn-page">{{currentPage
+                                                    + 1}}/{{numberOfPages()}}</button></a></li>
+                                        <li class="page-item"><a class="page-link"><button class="btn-page" ng-disabled="currentPage >= getData().length / pageSize - 1"
+                                                    ng-click="currentPage = currentPage + 1"> <i class="fa fa-angle-right"
+                                                        aria-hidden="true"></i></button></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#myDatepicker1').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+</script>

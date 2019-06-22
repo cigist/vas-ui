@@ -1,0 +1,120 @@
+<div class="row" ng-app="exaq" ng-controller="nodelControlCtrl">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>COMDATE NO DEL<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content" ng-init="init()">
+                <form class="form-horizontal form-label-left input_mask">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-lg-4">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">PCC</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <select class="form-control select" ng-model="pcc" required>
+                                        <option value="">All</option>
+                                        <option ng-repeat="items in listPcc" value="{{items.id}}">{{items.desc}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-3 col-lg-3">
+                            <div class="form-group">
+                                <label class="control-label col-md-4 col-sm-4 col-xs-12">Total</label>
+                                <div class="col-md-8 col-sm-8 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="records" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-1 col-lg-1 col-md-1">
+                            <div class="form-group">
+                                <div style="float:right;">
+                                    <button type="button" class="btn btn-dark btn-load"
+                                        ng-click="getList()">LOAD</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ASP</th>
+                                <th>Pengelola</th>
+                                <th>Ponsel</th>
+                                <th>COM</th>
+                                <th>COM-1</th>
+                                <th>COM-2</th>
+                                <th>STA</th>
+                                <th>TRACE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="items in listData" ng-click="showDetail(items)">
+                                <td>{{items.rowNum}}</td>
+                                <td>{{items.asp}}</td>
+                                <td>{{items.pengelola}}</td>
+                                <td>{{items.ponsel}}</td>
+                                <td>{{items.com}}</td>
+                                <td>{{items.com1}}</td>
+                                <td>{{items.com2}}</td>
+                                <td>{{items.sta}}</td>
+                                <td>{{items.trace}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <section>
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">
+                            <div style="margin-left: 5px;">
+                                Record :
+                                <select id="jmlBaris" ng-change="changeRecords()" ng-model="pageSize"
+                                    ng-options="page.no as page.no for page in pageSizeNo"
+                                    style="background-color: transparent;border: 0px;width: 60px;">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-7 col-sm-10 col-md-10 col-lg-10">
+                            <div class="row"
+                                style="float:right;margin-right:5px;margin-bottom:-20px;margin-top: -15px;">
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item" ng-click="backPage()">
+                                            <a class="page-link">
+                                                <button class="btn-page" ng-disabled="currentPage == 0">
+                                                    <i aria-hidden="true" class="fa fa-angle-left">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="page-item">
+                                            <a class="page-link" disabled="">
+                                                <button class="btn-page">
+                                                    {{currentPage
+                                                    + 1}}/{{numberOfPages()}}
+                                                </button>
+                                            </a>
+                                        </li>
+                                        <li class="page-item" ng-click="nextPage()">
+                                            <a class="page-link">
+                                                <button class="btn-page"
+                                                    ng-disabled="currentPage >= records / pageSize - 1">
+                                                    <i aria-hidden="true" class="fa fa-angle-right">
+                                                    </i>
+                                                </button>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>

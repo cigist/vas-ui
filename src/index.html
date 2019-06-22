@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>exaq - space | </title>
+    <!-- Bootstrap -->
+    <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="./assets/css/nprogress.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link rel="stylesheet" href="./assets/css/jquery-confirm.css">
+    <!-- mystyle -->
+    <link rel="stylesheet" href="./assets/css/style210920182028.css">
+    <script src="./assets/vendor/jquery.min.js"></script>
+    <script src="./assets/lib/bundle.js"></script>
+    <script src="./assets/vendor/angular-fullscreen.js"></script>
+    <script src="./assets/vendor/bootstrap.min.js"></script>
+    <script src="./assets/vendor/jquery-confirm.js"></script>
+    <script src="./assets/vendor/loadingoverlay.js"></script>
+     <!-- data table Theme Scripts -->
+     <script src="./assets/vendor/jquery.dataTables.min.js"></script>
+     <script src="./assets/vendor/dataTables.bootstrap.min.js"></script>
+     <script src="./assets/vendor/ui-bootstrap.js"></script>
+     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBr3NS3Tb_taWdVqNQFSTJ5TlvvhN9gV08&libraries=places"></script>
+     <script src="./assets/vendor/angularjs-google-maps.js"></script>
+    <!-- <script src="./assets/vendor/angular-web-notification.js"></script> -->
+    <script src="./assets/js/app210920182028.js"></script>
+</head>
+<body class="login" ng-app="vas" ng-controller="indexCtrl" style="background-image: url('./images/exaq-bg.jpg');" ng-cloak>
+    <div style="float:left;margin-top:4%;margin-left: 30px;">
+        <div class="login_wrapper" ng-init="init()">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    <form>
+                        <h1>exaq space</h1>
+                        <div>
+                            <h4>Scan QR code dengan myexaq dismartphone anda</h4>
+                            <div style="position: relative;">
+                                <div id="barcode">
+                                </div>
+                                <img src="https://exaq.id/x.png" style="width: 42px;height: 42px;left: 120px;position: absolute;top: 129px;z-index: 100px;background-color: #ffffff;border-radius: 0px;padding: 3px 3px 3px 3px;">
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

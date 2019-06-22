@@ -1,0 +1,9 @@
+{
+    "name": "exaq-smart",
+    "short_name": "smart",
+    "start_url": "Notification",
+    "gcm_sender_id": "103953800507",
+    "version":"v1.0.1 www.exaq.id",
+    "env":"DEV"
+
+  }

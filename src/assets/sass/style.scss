@@ -1,0 +1,118 @@
+@import 'daterangepicker';
+@import 'custom';
+
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  opacity: 1;
+  /* Firefox */
+  font-style: italic;
+}
+
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+  border-radius: 0;
+  width: 100%;
+  margin: 0;
+  padding: 5px;
+  font-size: 13px;
+  height: auto;
+  box-shadow: none !important;
+}
+
+table th {
+  font-size: 13px;
+}
+
+table td {
+  font-size: 12px;
+}
+
+.pagination .page-link {
+  // #4B5F71
+  color: #4B5F71; //  border-color: #364B5F;
+  font-size: 12px;
+}
+
+.page-link a {
+  padding: 1px;
+  margin: 1px;
+}
+
+.btn-page {
+  border: none;
+  height: 0;
+  margin: none;
+  background-color: transparent;
+  padding: none;
+}
+
+select:not([multiple]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url("../../images/arrow-down.png");
+  padding: 0.4em;
+  color: #4B5F71;
+  padding-right: 1.5em;
+}
+
+.dropdown-icon{
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: url("../../images/arrow-down.png");
+  padding: 0.7em;
+  color: #4B5F71;
+  padding-right: 1.2em;
+  float: right;
+}
+.no-margin {
+  margin: 0;
+}
+.wrapper {
+  width: auto;
+  position: relative;
+  }
+  .wrapper .selected-items-box {
+  cursor: pointer;
+  border: solid 1px #ddd;
+  padding:5px;
+  background-color: transparent;
+  color : #4B5F71;
+  }
+  .selected-items-box .items-list {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+  .selected-items-box .items-list li {
+  display: inline;
+  }
+  
+  .wrapper .list {
+  display: none;
+  height: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-left: solid 1px #C7C6C7;
+  border-right: solid 1px #C7C6C7;
+  border-bottom: solid 1px #C7C6C7;
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  }
+  .list .items-list {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+  .list .items-list li {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+  border-bottom: solid 1px #C7C6C7;
+  padding: 5px;
+  background-color: #fff;
+  }
