@@ -13,7 +13,7 @@
     "angular-material": "^1.1.10",
     "angular-messages": "^1.7.2",
     "angularjs-dropdown-multiselect": "^2.0.0-beta.10",
-    "browser-sync": "^2.24.6",
+    "browser-sync": "^2.27.10",
     "cleave.js": "^1.4.2",
     "gasparesganga-jquery-loading-overlay": "^2.1.5",
     "gulp-autoprefixer": "^5.0.0",
